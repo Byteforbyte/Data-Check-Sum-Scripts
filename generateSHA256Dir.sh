@@ -1,3 +1,9 @@
-scanpath='/var';
-now='date +"%m_%d_%Y"';
-sha256sum ${scanpath}/* 2>/dev/null > ${scanpath}/${now}_checksum.csv;
+scanpath='./test';
+now='date +%m_%d_%Y';
+results=();
+for i in $(find ${scanpath});
+   do result=$( echo $(sha256sum ${i} 2>/dev/null)); 
+   results+=($(echo $result));
+   done; 
+output=$(echo $(echo ${scanpath})/$(${now})_checksum.csv)
+printf '%s\n' "${results[@]}" > $output
