@@ -1,4 +1,6 @@
-$dirpath = 'G:\Preston'
+ <# Used for archiving systems. Information can be found @ https://byteforbyte.io/forum/t/collect-metadata-of-files-in-a-directory-and-generate-a-csv-powershell-tutorial/5/ #>
+
+$dirpath = 'G:\dirtoscan'
 
 
 function Get-FileMetaData {
