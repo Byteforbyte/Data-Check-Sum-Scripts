@@ -1,3 +1,5 @@
+#Check https://byteforbyte.io/tools for more information
+
 scanpath='./test';
 now='date +%m_%d_%Y';
 results=();
