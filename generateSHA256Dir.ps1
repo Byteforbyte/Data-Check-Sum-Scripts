@@ -1,12 +1,14 @@
-<# Check https://byteforbyte.io/tools for more information#>
+#More info can be found @ https://byteforbyte.io/tools
 
-$dir = "C:\path\to\directory"
+$dir = "c:\path\to\scan"
 $alldata = @()
-$files = Get-ChildItem -Path $dir* -Include *.* -Recurse | select target
+$files = Get-ChildItem -Path $dir -Filter *.* -Recurse -ErrorAction SilentlyContinue -Force | %{$_.FullName}
+
 foreach($file in $files){
-  $data = get-filehash $file.Target
-  $alldata+=$data
-}
-$date = get-date -f MM-dd-YYYY
+        $data = get-filehash $file
+        $alldata+=$data
+    }
+
+$date = get-date -f MM-dd-yy
 $exportpath = $dir + "\" + $date + "_checksum.csv"
 $alldata | export-csv $exportpath
